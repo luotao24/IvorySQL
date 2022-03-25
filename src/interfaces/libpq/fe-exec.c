@@ -271,6 +271,7 @@ PQsetResultAttrs(PGresult *res, int numAttributes, PGresAttDesc *attDescs)
 	return true;
 }
 
+
 /*
  * PQcopyResult
  *

@@ -748,6 +748,11 @@ get_package_oid(List *packagename, bool missing_ok)
 
 	DeconstructQualifiedName(packagename, &schema, &package);
 
+	if (schema == NULL && package == NULL)
+		ereport(ERROR,
+				 (errcode(ERRCODE_UNDEFINED_OBJECT),
+				  errmsg("null schema name or package name")));
+
 	if (schema)
 	{
 		namespaceId = get_namespace_oid(schema, false);
